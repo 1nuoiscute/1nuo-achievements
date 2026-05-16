@@ -3,14 +3,14 @@
    ============================================ */
 
 const STORAGE_KEY = 'nuo-achievements';
-const RARITY_ORDER = ['common','uncommon','rare','epic','legendary'];
+const RARITY_ORDER = ['common','uncommon','rare','epic','legendary','mythic'];
 const RARITY_LABELS = {
-  common: '普通', uncommon: '稀有', rare: '珍贵',
-  epic: '史诗', legendary: '传说'
+  common: '普通', uncommon: '优秀', rare: '稀有',
+  epic: '罕见', legendary: '史诗', mythic: '传说'
 };
 const RARITY_EMOJIS = {
-  common: '🟤', uncommon: '🟢', rare: '🔵',
-  epic: '🟣', legendary: '🟠'
+  common: '🤍', uncommon: '💚', rare: '💙',
+  epic: '💜', legendary: '💛', mythic: '❤️'
 };
 const CATEGORY_LABELS = {
   life: '生活', study: '学习', explore: '探索',
@@ -63,8 +63,8 @@ function saveAchievements() {
 
 function getDefaults() {
   return [
-    { id: crypto.randomUUID(), title: '第一篇博客', description: '在 1nuo.me 上发表了第一篇文章', rarity: 'epic', category: 'skill', icon: '📝', completed: false, dateCreated: '2026-05-06' },
-    { id: crypto.randomUUID(), title: '高数全过', description: '大一上学期高数考试通过', rarity: 'rare', category: 'study', icon: '📐', completed: true, dateCreated: '2026-01-15', dateCompleted: '2026-01-15' },
+    { id: crypto.randomUUID(), title: '第一步万步', description: '单日步数首次突破 10000', rarity: 'common', category: 'life', icon: '🚶', completed: true, dateCreated: '2026-05-16', dateCompleted: '2026-05-16' },
+    { id: crypto.randomUUID(), title: '第一篇博客', description: '在 1nuo.me 上发表了第一篇文章', rarity: 'legendary', category: 'skill', icon: '📝', completed: false, dateCreated: '2026-05-06' },
   ].sort((a, b) => (b.dateCreated || '').localeCompare(a.dateCreated || ''));
 }
 

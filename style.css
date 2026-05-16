@@ -24,11 +24,12 @@
   --text-tertiary: oklch(0.65 0.01 70);
 
   /* Rarity colors (muted morandi tones) */
-  --rarity-common: oklch(0.62 0.045 60);
-  --rarity-uncommon: oklch(0.58 0.05 145);
-  --rarity-rare: oklch(0.55 0.06 240);
-  --rarity-epic: oklch(0.52 0.07 300);
-  --rarity-legendary: oklch(0.58 0.09 55);
+  --rarity-common: oklch(0.68 0.03 60);
+  --rarity-uncommon: oklch(0.55 0.06 145);
+  --rarity-rare: oklch(0.5 0.07 240);
+  --rarity-epic: oklch(0.52 0.08 300);
+  --rarity-legendary: oklch(0.6 0.09 50);
+  --rarity-mythic: oklch(0.5 0.12 25);
 
   /* Interactive */
   --accent: oklch(0.5 0.08 60);
@@ -275,7 +276,7 @@ body {
 }
 
 .card-rarity.common {
-  background: oklch(0.95 0.02 60);
+  background: oklch(0.95 0.015 60);
   color: var(--rarity-common);
 }
 .card-rarity.uncommon {
@@ -291,8 +292,12 @@ body {
   color: var(--rarity-epic);
 }
 .card-rarity.legendary {
-  background: oklch(0.93 0.04 55);
+  background: oklch(0.94 0.04 50);
   color: var(--rarity-legendary);
+}
+.card-rarity.mythic {
+  background: oklch(0.92 0.05 25);
+  color: var(--rarity-mythic);
 }
 
 .card-header {
