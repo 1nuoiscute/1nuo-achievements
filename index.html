@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成就 · 诺诺</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="page-header">
+    <div class="header-inner">
+      <h1 class="site-title">🏆 成就</h1>
+      <p class="site-subtitle">诺诺的成就收集册</p>
+    </div>
+    <div class="stats-bar">
+      <div class="stat" id="stat-total"><span class="stat-num">0</span><span class="stat-label">总计</span></div>
+      <div class="stat" id="stat-completed"><span class="stat-num">0</span><span class="stat-label">已完成</span></div>
+      <div class="stat" id="stat-rate"><span class="stat-num">0%</span><span class="stat-label">完成率</span></div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="main-content">
+
+    <!-- Filters -->
+    <section class="filters">
+      <div class="filter-group">
+        <label class="filter-label">稀有度</label>
+        <div class="filter-chips" id="filter-rarity">
+          <button class="chip active" data-value="all">全部</button>
+          <button class="chip" data-value="common">🟤 普通</button>
+          <button class="chip" data-value="uncommon">🟢 稀有</button>
+          <button class="chip" data-value="rare">🔵 珍贵</button>
+          <button class="chip" data-value="epic">🟣 史诗</button>
+          <button class="chip" data-value="legendary">🟠 传说</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">状态</label>
+        <div class="filter-chips" id="filter-status">
+          <button class="chip active" data-value="all">全部</button>
+          <button class="chip" data-value="completed">已达成</button>
+          <button class="chip" data-value="pending">未达成</button>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button class="btn btn-sm" id="btn-sort">📅 最新</button>
+        <button class="btn btn-primary btn-sm" id="btn-add">＋ 新成就</button>
+      </div>
+    </section>
+
+    <!-- Achievement Grid -->
+    <section class="grid" id="achievement-grid">
+      <!-- Cards rendered by JS -->
+    </section>
+
+  </main>
+
+  <!-- Add/Edit Modal -->
+  <dialog class="modal" id="modal-achievement">
+    <form class="modal-form" method="dialog">
+      <h2 class="modal-title" id="modal-title">新成就</h2>
+
+      <div class="form-field">
+        <label for="input-title">名称</label>
+        <input type="text" id="input-title" placeholder="成就名称" maxlength="50" required>
+      </div>
+
+      <div class="form-field">
+        <label for="input-desc">描述</label>
+        <textarea id="input-desc" placeholder="说说这个成就..." rows="3" maxlength="200"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="input-rarity">稀有度</label>
+          <select id="input-rarity">
+            <option value="common">🟤 普通</option>
+            <option value="uncommon">🟢 稀有</option>
+            <option value="rare">🔵 珍贵</option>
+            <option value="epic">🟣 史诗</option>
+            <option value="legendary">🟠 传说</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="input-category">分类</label>
+          <select id="input-category">
+            <option value="life">生活</option>
+            <option value="study">学习</option>
+            <option value="explore">探索</option>
+            <option value="skill">技能</option>
+            <option value="special">特别</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="input-icon">图标</label>
+        <input type="text" id="input-icon" placeholder="选一个 emoji（可选）" maxlength="5">
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn" id="btn-modal-cancel">取消</button>
+        <button type="submit" class="btn btn-primary" id="btn-modal-save">保存</button>
+      </div>
+
+      <input type="hidden" id="input-id" value="">
+    </form>
+  </dialog>
+
+  <!-- Delete Confirm Modal -->
+  <dialog class="modal modal-sm" id="modal-delete">
+    <div class="modal-form">
+      <p class="delete-text">确定删除这个成就吗？</p>
+      <div class="form-actions">
+        <button class="btn" id="btn-delete-cancel">取消</button>
+        <button class="btn btn-danger" id="btn-delete-confirm">删除</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

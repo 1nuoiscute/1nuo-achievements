@@ -1,0 +1,543 @@
+/* ============================================
+   Achievements · Morandi Palette
+   Inspired by frontend-design-pro guidelines
+   ============================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Morandi palette - warm ivory base */
+  --bg: oklch(0.97 0.008 80);
+  --surface: oklch(0.95 0.01 85);
+  --card: oklch(0.99 0.006 82);
+  --card-hover: oklch(0.97 0.008 82);
+  --border: oklch(0.88 0.012 80);
+
+  /* Text */
+  --text-primary: oklch(0.3 0.015 60);
+  --text-secondary: oklch(0.5 0.015 65);
+  --text-tertiary: oklch(0.65 0.01 70);
+
+  /* Rarity colors (muted morandi tones) */
+  --rarity-common: oklch(0.62 0.045 60);
+  --rarity-uncommon: oklch(0.58 0.05 145);
+  --rarity-rare: oklch(0.55 0.06 240);
+  --rarity-epic: oklch(0.52 0.07 300);
+  --rarity-legendary: oklch(0.58 0.09 55);
+
+  /* Interactive */
+  --accent: oklch(0.5 0.08 60);
+  --accent-hover: oklch(0.45 0.09 60);
+  --danger: oklch(0.55 0.08 25);
+
+  /* Misc */
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 3px oklch(0 0 0 / 0.06), 0 1px 2px oklch(0 0 0 / 0.04);
+  --shadow-lg: 0 8px 30px oklch(0 0 0 / 0.08);
+  --transition: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Noto Serif SC', Georgia, serif;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0 16px;
+}
+
+/* --- Header --- */
+.page-header {
+  text-align: center;
+  padding: 48px 0 32px;
+}
+
+.header-inner {
+  margin-bottom: 28px;
+}
+
+.site-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.site-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+/* --- Stats Bar --- */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--card);
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  min-width: 80px;
+}
+
+.stat-num {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Filters --- */
+.filters {
+  max-width: 960px;
+  margin: 0 auto 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  padding: 5px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  background: var(--card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: oklch(0.97 0.015 82);
+}
+
+.chip.active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: oklch(0.99 0 0);
+}
+
+.filter-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* --- Buttons --- */
+.btn {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 8px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: oklch(0.99 0 0);
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: oklch(0.99 0 0);
+}
+
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 0.78rem;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: oklch(0.99 0 0);
+  border-color: var(--danger);
+}
+
+.btn-danger:hover {
+  opacity: 0.85;
+}
+
+/* --- Grid --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto 48px;
+}
+
+/* --- Card --- */
+.card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: oklch(0.82 0.015 80);
+}
+
+.card.completed {
+  opacity: 0.8;
+}
+
+.card.completed .card-title {
+  text-decoration: line-through;
+  text-decoration-color: var(--text-tertiary);
+  text-decoration-thickness: 1.5px;
+}
+
+.card-rarity {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.card-rarity.common {
+  background: oklch(0.95 0.02 60);
+  color: var(--rarity-common);
+}
+.card-rarity.uncommon {
+  background: oklch(0.93 0.025 145);
+  color: var(--rarity-uncommon);
+}
+.card-rarity.rare {
+  background: oklch(0.92 0.03 240);
+  color: var(--rarity-rare);
+}
+.card-rarity.epic {
+  background: oklch(0.92 0.035 300);
+  color: var(--rarity-epic);
+}
+.card-rarity.legendary {
+  background: oklch(0.93 0.04 55);
+  color: var(--rarity-legendary);
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.card-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.card-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-category {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  padding: 2px 10px;
+  background: var(--surface);
+  border-radius: 12px;
+}
+
+.card-date {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+}
+
+.card-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.card:hover .card-actions {
+  opacity: 1;
+}
+
+.card-action-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.card-action-btn:hover {
+  background: var(--border);
+  color: var(--text-primary);
+}
+
+.card-action-btn.danger:hover {
+  background: oklch(0.9 0.04 25);
+  color: var(--danger);
+}
+
+/* --- Empty State --- */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.empty-state-text {
+  font-size: 0.95rem;
+}
+
+/* --- Modal --- */
+.modal {
+  border: none;
+  border-radius: var(--radius);
+  padding: 0;
+  max-width: 480px;
+  width: min(440px, 90vw);
+  box-shadow: var(--shadow-lg);
+  background: var(--card);
+}
+
+.modal::backdrop {
+  background: oklch(0 0 0 / 0.3);
+}
+
+.modal-sm {
+  max-width: 340px;
+}
+
+.modal-form {
+  padding: 28px;
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.form-field {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-field label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: oklch(0.99 0.005 82);
+  color: var(--text-primary);
+  transition: var(--transition);
+  outline: none;
+  width: 100%;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px oklch(0.8 0.04 60 / 0.25);
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 64px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.delete-text {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+  .page-header {
+    padding: 32px 0 24px;
+  }
+
+  .stats-bar {
+    gap: 12px;
+  }
+
+  .stat {
+    padding: 10px 16px;
+    min-width: 64px;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-actions {
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .card-actions {
+    opacity: 1;
+  }
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
